@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
 	FooterContainer,
 	FooterContent,
@@ -29,7 +30,9 @@ const Footer = () => {
 					<FooterLink href="https://neildembla.com/contact">
 						Contact Us
 					</FooterLink>
-					<FooterLink href="/feedback">Feedback</FooterLink>
+					<FooterLink as={Link} to="/feedback">
+						Feedback
+					</FooterLink>
 				</FooterSection>
 
 				<FooterSection>
