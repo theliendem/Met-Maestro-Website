@@ -66,21 +66,16 @@ const Header = () => {
 							Modes
 						</NavLink>
 					</NavItem>
-					<NavItem>
-						<NavLink
-							href="#testimonials"
-							onClick={(e) => handleNavClick(e, "#testimonials")}
-						>
-							Reviews
-						</NavLink>
-					</NavItem>
 					{/*
+					<NavItem>
+						<NavLink href="#testimonials" onClick={(e) => handleNavClick(e, "#testimonials")}>Reviews</NavLink>
+					</NavItem>
+					*/}
 					<NavItem>
 						<NavLink as={Link} to="/feedback">
 							Feedback
 						</NavLink>
 					</NavItem>
-					*/}
 					<NavItem>
 						<CTAButton
 							as={motion.a}
