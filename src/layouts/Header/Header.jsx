@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
 	HeaderContainer,
 	Nav,
@@ -11,7 +11,29 @@ import {
 	CTAButton,
 } from "./Header.styles";
 
+const scrollToHash = (hash) => {
+	if (!hash) return;
+	const el = document.getElementById(hash.replace("#", ""));
+	if (el) {
+		el.scrollIntoView({ behavior: "smooth" });
+	}
+};
+
 const Header = () => {
+	const location = useLocation();
+	const navigate = useNavigate();
+
+	const handleNavClick = (e, hash) => {
+		e.preventDefault();
+		if (location.pathname !== "/") {
+			navigate("/", { replace: false });
+			// Wait for navigation, then scroll
+			setTimeout(() => scrollToHash(hash), 100);
+		} else {
+			scrollToHash(hash);
+		}
+	};
+
 	return (
 		<HeaderContainer
 			as={motion.header}
@@ -32,13 +54,25 @@ const Header = () => {
 				</Logo>
 				<NavList>
 					<NavItem>
-						<NavLink href="#features">Features</NavLink>
+						<NavLink
+							href="#features"
+							onClick={(e) => handleNavClick(e, "#features")}
+						>
+							Features
+						</NavLink>
 					</NavItem>
 					<NavItem>
-						<NavLink href="#modes">Modes</NavLink>
+						<NavLink href="#modes" onClick={(e) => handleNavClick(e, "#modes")}>
+							Modes
+						</NavLink>
 					</NavItem>
 					<NavItem>
-						<NavLink href="#testimonials">Reviews</NavLink>
+						<NavLink
+							href="#testimonials"
+							onClick={(e) => handleNavClick(e, "#testimonials")}
+						>
+							Reviews
+						</NavLink>
 					</NavItem>
 					<NavItem>
 						<NavLink as={Link} to="/feedback">
