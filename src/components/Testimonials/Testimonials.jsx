@@ -40,7 +40,7 @@ const Testimonials = () => {
 
   const stats = [
     { number: "New", label: "Fresh Release" },
-    { number: "4.9★", label: "App Store Rating" },
+    { number: "5.0★", label: "App Store Rating" },
     { number: "iOS", label: "Available Now" },
     { number: "Free", label: "Download" }
   ];

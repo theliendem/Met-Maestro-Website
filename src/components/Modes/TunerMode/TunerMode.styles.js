@@ -39,7 +39,7 @@ export const ModeContent = styled.div`
 export const InteractiveDemo = styled.div`
   background: ${theme.colors.background};
   border-radius: 15px;
-  padding: ${theme.spacing.xl};
+  padding: 1.5rem 1rem;
   border: 1px solid ${theme.colors.border};
   display: flex;
   flex-direction: column;

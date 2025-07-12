@@ -4,6 +4,7 @@ import { theme } from '../../styles/theme';
 export const CTAContainer = styled.section`
   background: linear-gradient(135deg, ${theme.colors.surface} 0%, ${theme.colors.background} 100%);
   padding: ${theme.spacing.xxl} ${theme.spacing.lg};
+  margin-top: 6rem;
   
   @media (max-width: ${theme.breakpoints.tablet}) {
     padding: ${theme.spacing.xl} ${theme.spacing.md};
