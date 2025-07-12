@@ -74,11 +74,13 @@ const Header = () => {
 							Reviews
 						</NavLink>
 					</NavItem>
+					{/*
 					<NavItem>
 						<NavLink as={Link} to="/feedback">
 							Feedback
 						</NavLink>
 					</NavItem>
+					*/}
 					<NavItem>
 						<CTAButton
 							as={motion.a}
