@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { MdGraphicEq, MdPalette, MdFlashOn, MdSettings, MdMusicNote, MdDevices } from 'react-icons/md';
 import { 
   FeaturesContainer, 
   FeaturesTitle, 
@@ -13,32 +14,32 @@ import {
 const Features = () => {
   const features = [
     {
-      icon: '🎯',
+      icon: <MdGraphicEq />,
       title: 'Professional Precision',
       description: 'Industry-standard accuracy with timing precision that professionals rely on.'
     },
     {
-      icon: '🎨',
+      icon: <MdPalette />,
       title: 'Beautiful Design',
       description: 'Modern, minimalistic interface that puts focus on your music.'
     },
     {
-      icon: '⚡',
+      icon: <MdFlashOn />,
       title: 'Lightning Fast',
       description: 'Instant response time with smooth, fluid animations.'
     },
     {
-      icon: '🔧',
+      icon: <MdSettings />,
       title: 'Highly Customizable',
       description: 'Tailor every aspect to match your musical needs and preferences.'
     },
     {
-      icon: '🎵',
+      icon: <MdMusicNote />,
       title: 'Multiple Modes',
       description: 'Three powerful modes: Metronome, Show Builder, and Tuner.'
     },
     {
-      icon: '📱',
+      icon: <MdDevices />,
       title: 'Cross-Platform',
       description: 'Works seamlessly across all your devices and platforms.'
     }
@@ -67,7 +68,11 @@ const Features = () => {
             viewport={{ once: true, amount: 0.5 }}
             whileHover={{ y: -10 }}
           >
-            <FeatureIcon>{feature.icon}</FeatureIcon>
+            <FeatureIcon>
+              <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+                {feature.icon}
+              </motion.div>
+            </FeatureIcon>
             <FeatureTitle>{feature.title}</FeatureTitle>
             <FeatureDescription>{feature.description}</FeatureDescription>
           </FeatureCard>

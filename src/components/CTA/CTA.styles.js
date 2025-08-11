@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme } from '../../styles/theme';
 
 export const CTAContainer = styled.section`
-  background: linear-gradient(135deg, ${theme.colors.surface} 0%, ${theme.colors.background} 100%);
+  background: transparent;
   padding: ${theme.spacing.xxl} ${theme.spacing.lg};
   margin-top: 6rem;
   
@@ -39,55 +39,46 @@ export const CTADescription = styled.p`
 
 export const CTAButtons = styled.div`
   display: flex;
-  gap: ${theme.spacing.lg};
+  gap: ${theme.spacing.xl};
   justify-content: center;
+  align-items: center;
   margin-bottom: ${theme.spacing.xxl};
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
   
   @media (max-width: ${theme.breakpoints.mobile}) {
     flex-direction: column;
     align-items: center;
+    gap: ${theme.spacing.lg};
   }
 `;
 
-export const PrimaryButton = styled.button`
-  background: ${theme.colors.accent};
-  color: ${theme.colors.text.primary};
-  padding: ${theme.spacing.md} ${theme.spacing.xl};
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: ${theme.transitions.default};
-  box-shadow: ${theme.shadows.medium};
+export const StoreBadge = styled.a`
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
   
-  &:hover {
-    background: ${theme.colors.accent}dd;
-    transform: translateY(-2px);
-    box-shadow: ${theme.shadows.large};
+  img {
+    height: 68px;
+    width: auto;
   }
-`;
-
-export const SecondaryButton = styled.button`
-  background: transparent;
-  color: ${theme.colors.text.primary};
-  padding: ${theme.spacing.md} ${theme.spacing.xl};
-  border: 2px solid ${theme.colors.border};
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: ${theme.transitions.default};
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   
-  &:hover {
-    border-color: ${theme.colors.accent};
-    color: ${theme.colors.accent};
-    transform: translateY(-2px);
+  &:nth-child(2) img {
+    height: 103px;
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    img {
+      height: 76px;
+    }
+    
+    &:nth-child(2) img {
+      height: 102px;
+    }
   }
 `;
 

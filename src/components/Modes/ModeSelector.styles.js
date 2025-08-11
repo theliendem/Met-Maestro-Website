@@ -23,9 +23,22 @@ export const ModeButtons = styled.div`
   gap: ${theme.spacing.md};
   margin-bottom: ${theme.spacing.xl};
   
+  /* Add breathing room on smaller screens so outer buttons don't hug the edges */
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    padding: 0 ${theme.spacing.lg};
+  }
+  
   @media (max-width: ${theme.breakpoints.mobile}) {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
+    padding: 0 ${theme.spacing.md};
+  }
+
+  /* Stack buttons and allow full-width below 452px to prevent edge touching */
+  @media (max-width: 452px) {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 ${theme.spacing.lg};
   }
 `;
 
@@ -33,12 +46,16 @@ export const ModeButton = styled.button`
   background: ${props => props.active ? theme.colors.accent : 'transparent'};
   color: ${props => props.active ? theme.colors.text.primary : theme.colors.text.secondary};
   border: 2px solid ${props => props.active ? theme.colors.accent : theme.colors.border};
-  padding: ${theme.spacing.md} ${theme.spacing.xl};
+  padding: ${theme.spacing.sm} ${theme.spacing.lg};
   border-radius: 50px;
   font-weight: 600;
   font-size: 1rem;
   transition: ${theme.transitions.default};
-  min-width: 120px;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   
   &:hover {
     border-color: ${theme.colors.accent};
@@ -47,7 +64,11 @@ export const ModeButton = styled.button`
   }
   
   @media (max-width: ${theme.breakpoints.mobile}) {
-    width: 200px;
+    width: 100%;
+  }
+
+  @media (max-width: 452px) {
+    width: 100%;
   }
 `;
 

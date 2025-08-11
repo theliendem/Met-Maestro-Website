@@ -27,28 +27,49 @@ export const ModeDescription = styled.p`
 export const ModeContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: ${theme.spacing.xxl};
+  gap: clamp(2rem, ${theme.spacing.vxl}, 4rem);
   align-items: stretch;
+  padding: 0 clamp(1rem, ${theme.spacing.vlg}, 3rem);
   
   @media (max-width: ${theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
-    gap: ${theme.spacing.xl};
+    gap: clamp(1.5rem, ${theme.spacing.vmd}, 3rem);
+    padding: 0 clamp(0.75rem, ${theme.spacing.vmd}, 2rem);
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding: 0 clamp(0.5rem, ${theme.spacing.vsm}, 1.5rem);
+    gap: clamp(1rem, ${theme.spacing.vsm}, 2rem);
   }
 `;
 
 export const InteractiveDemo = styled.div`
-  background: ${theme.colors.background};
+  background: transparent;
   border-radius: 24px;
-  padding: 1.5rem 1rem;
-  border: 1px solid ${theme.colors.border};
+  padding: 0;
+  border: none;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
-  min-width: 320px;
-  height: 100%;
+  justify-content: center;
+  width: 100%;
+  height: auto;
   position: relative;
-  box-shadow: 0 0 32px 0 #bb86fc22;
+  max-width: min(400px, 90vw);
+  overflow: visible;
+  animation: pulse-glow 3s ease-in-out infinite;
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    max-width: min(300px, 85vw);
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      filter: drop-shadow(0 0 20px rgba(187, 134, 252, 0.5));
+    }
+    50% {
+      filter: drop-shadow(0 0 40px rgba(187, 134, 252, 0.8));
+    }
+  }
 `;
 
 export const TopRow = styled.div`
@@ -59,22 +80,22 @@ export const TopRow = styled.div`
 `;
 
 export const CornerButton = styled.button`
-  background: ${theme.colors.surface};
-  border: none;
-  border-radius: 16px;
-  width: 64px;
-  height: 64px;
+  background: transparent;
+  border: 2px solid #333;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 16px 0 #bb86fc33;
   transition: ${theme.transitions.default};
   outline: none;
-  font-size: 2rem;
-  color: #bbb;
+  color: #fff;
   position: relative;
+  cursor: pointer;
   &:hover {
-    box-shadow: 0 0 24px 0 #bb86fc66;
+    border-color: ${theme.colors.accent};
     color: ${theme.colors.accent};
   }
 `;
@@ -83,7 +104,9 @@ export const CenterSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
+  justify-content: center;
+  flex: 1;
+  gap: 1rem;
 `;
 
 export const BPMNumber = styled.div`
@@ -91,7 +114,8 @@ export const BPMNumber = styled.div`
   font-weight: 700;
   color: ${theme.colors.text.primary};
   text-align: center;
-  margin-bottom: 0.25rem;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
 `;
 
 export const BPMLabel = styled.div`
@@ -111,9 +135,15 @@ export const BPMButton = styled.button`
   border: none;
   color: ${theme.colors.text.primary};
   font-size: 2rem;
-  padding: 0 0.5rem;
+  padding: 0.3rem;
   cursor: pointer;
   transition: ${theme.transitions.default};
+  font-weight: 300;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:hover {
     color: ${theme.colors.accent};
   }
@@ -121,29 +151,52 @@ export const BPMButton = styled.button`
 
 export const BPMSlider = styled.input`
   width: 140px;
-  accent-color: ${theme.colors.accent};
-  margin: 0 0.5rem;
+  height: 6px;
+  background: #333;
+  border-radius: 20px;
+  outline: none;
+  -webkit-appearance: none;
+  margin: 0 0.8rem;
+  
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: ${theme.colors.accent};
+    cursor: pointer;
+  }
+  
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: ${theme.colors.accent};
+    cursor: pointer;
+    border: none;
+  }
 `;
 
 export const PlayButton = styled.button`
-  background: ${theme.colors.background};
-  border: 3px solid ${theme.colors.accent};
+  background: ${theme.colors.accent};
+  border: none;
   border-radius: 50%;
-  width: 96px;
-  height: 96px;
+  width: 80px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 32px 0 #bb86fc55;
-  color: ${theme.colors.text.primary};
-  font-size: 2.5rem;
-  margin: 1.5rem 0 0.5rem 0;
+  box-shadow: 0 6px 24px rgba(187, 134, 252, 0.3);
+  color: white;
+  font-size: 2rem;
+  margin: 1rem 0;
   transition: ${theme.transitions.default};
   outline: none;
+  cursor: pointer;
   &:hover {
-    background: ${theme.colors.accent};
-    color: ${theme.colors.background};
-    box-shadow: 0 0 48px 0 #bb86fc99;
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(187, 134, 252, 0.4);
   }
 `;
 
@@ -256,21 +309,40 @@ export const ControlButton = styled.button`
 
 export const FeatureGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: ${theme.spacing.md};
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 45%), 1fr));
+  gap: clamp(1rem, ${theme.spacing.vmd}, 2rem);
+  
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    grid-template-columns: repeat(auto-fit, minmax(min(150px, 40%), 1fr));
+    gap: clamp(0.75rem, ${theme.spacing.vsm}, 1.5rem);
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+    gap: clamp(0.5rem, ${theme.spacing.vxs}, 1rem);
+  }
 `;
 
 export const FeatureCard = styled.div`
   background: ${theme.colors.background};
   border-radius: 15px;
-  padding: ${theme.spacing.lg};
+  padding: clamp(1rem, ${theme.spacing.vmd}, 2rem);
   border: 1px solid ${theme.colors.border};
   text-align: center;
   position: relative;
   transition: ${theme.transitions.default};
+  min-height: clamp(160px, 20vh, 220px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   
   &:hover {
     border-color: ${theme.colors.accent};
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding: clamp(0.75rem, ${theme.spacing.vsm}, 1.5rem);
+    min-height: clamp(140px, 18vh, 180px);
   }
 `;
 

@@ -7,7 +7,7 @@ import Footer from "./layouts/Footer/Footer";
 import Hero from "./components/Hero/Hero";
 import ModeSelector from "./components/Modes/ModeSelector";
 import Features from "./components/Features/Features";
-import Benefits from "./components/Benefits/Benefits";
+
 import Testimonials from "./components/Testimonials/Testimonials";
 import CTA from "./components/CTA/CTA";
 import Feedback from "./components/Feedback/Feedback";
@@ -28,7 +28,6 @@ function App() {
 									<Hero />
 									<ModeSelector />
 									<Features />
-									<Benefits />
 									{/* <Testimonials /> */}
 									<CTA />
 								</>

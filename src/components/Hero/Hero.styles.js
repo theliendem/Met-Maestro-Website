@@ -6,7 +6,7 @@ export const HeroContainer = styled.section`
   display: flex;
   align-items: center;
   padding: ${theme.spacing.xxl} ${theme.spacing.lg};
-  background: linear-gradient(135deg, ${theme.colors.background} 0%, ${theme.colors.surface} 100%);
+  background: transparent;
   
   @media (max-width: ${theme.breakpoints.tablet}) {
     padding: ${theme.spacing.xl} ${theme.spacing.md};
@@ -51,9 +51,15 @@ export const HeroButtons = styled.div`
   display: flex;
   gap: ${theme.spacing.md};
   
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    gap: ${theme.spacing.sm};
+    justify-content: center;
+  }
+  
   @media (max-width: ${theme.breakpoints.mobile}) {
     flex-direction: column;
     align-items: center;
+    gap: ${theme.spacing.sm};
   }
 `;
 
@@ -76,6 +82,17 @@ export const PrimaryButton = styled.button`
     transform: translateY(-2px);
     box-shadow: ${theme.shadows.large};
   }
+  
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    font-size: 1rem;
+    padding: ${theme.spacing.sm} ${theme.spacing.lg};
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    font-size: 0.9rem;
+    padding: ${theme.spacing.sm} ${theme.spacing.md};
+    max-width: 200px;
+  }
 `;
 
 export const SecondaryButton = styled.button`
@@ -96,6 +113,17 @@ export const SecondaryButton = styled.button`
     border-color: ${theme.colors.accent};
     color: ${theme.colors.accent};
     transform: translateY(-2px);
+  }
+  
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    font-size: 1rem;
+    padding: ${theme.spacing.sm} ${theme.spacing.lg};
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    font-size: 0.9rem;
+    padding: ${theme.spacing.sm} ${theme.spacing.md};
+    max-width: 200px;
   }
 `;
 

@@ -19,26 +19,34 @@ export const TestimonialsTitle = styled.h2`
 
 export const TestimonialsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: ${theme.spacing.xl};
-  margin-bottom: ${theme.spacing.xxl};
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 85%), 1fr));
+  gap: clamp(1.5rem, ${theme.spacing.vxl}, 3rem);
+  margin-bottom: clamp(2rem, ${theme.spacing.vxl}, 4rem);
   
   @media (max-width: ${theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
-    gap: ${theme.spacing.lg};
+    gap: clamp(1rem, ${theme.spacing.vlg}, 2rem);
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    gap: clamp(0.75rem, ${theme.spacing.vsm}, 1.5rem);
   }
 `;
 
 export const TestimonialCard = styled.div`
   background: ${theme.colors.surface};
   border-radius: 20px;
-  padding: ${theme.spacing.xl};
+  padding: clamp(1.5rem, ${theme.spacing.vlg}, 3rem);
   border: 1px solid ${theme.colors.border};
   transition: ${theme.transitions.default};
   
   &:hover {
     border-color: ${theme.colors.accent};
     box-shadow: ${theme.shadows.large};
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding: clamp(1rem, ${theme.spacing.vmd}, 2rem);
   }
 `;
 

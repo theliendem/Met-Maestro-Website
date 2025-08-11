@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import metModeImg from '../../../assets/images/met_mode.jpeg';
+import React from 'react';
+import metModeImg from '../../../assets/images/met.png';
 import { motion } from 'framer-motion';
+import { MdFlashOn, MdMusicNote, MdVolumeUp, MdTouchApp } from 'react-icons/md';
 import {
   ModeContainer,
   ModeHeader,
@@ -34,15 +35,6 @@ import {
 } from './MetMode.styles';
 
 const MetMode = () => {
-  // Demo state for BPM and time signature
-  const [bpm, setBpm] = useState(120);
-  const [topNum, setTopNum] = useState(4);
-  const [botNum, setBotNum] = useState(4);
-
-  // Clamp BPM
-  const handleBpmChange = (val) => {
-    setBpm(Math.max(40, Math.min(200, val)));
-  };
 
   return (
     <ModeContainer>
@@ -54,8 +46,18 @@ const MetMode = () => {
       </ModeHeader>
 
       <ModeContent>
-        <InteractiveDemo style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', maxWidth: 350, height: 'auto', aspectRatio: '1/2', minWidth: 0, margin: '0 auto', background: '#18181b' }}>
-          <img src={metModeImg} alt="Met Mode Screenshot" style={{ width: '100%', height: '100%', maxWidth: 350, maxHeight: 700, borderRadius: 20, boxShadow: '0 0 32px #bb86fc22', objectFit: 'contain', aspectRatio: '1/2' }} />
+        <InteractiveDemo>
+          <img 
+            src={metModeImg} 
+            alt="Met Mode Screenshot" 
+            style={{ 
+              width: '100%', 
+              height: 'auto', 
+              borderRadius: '20px', 
+              objectFit: 'cover',
+              maxWidth: '100%'
+            }} 
+          />
         </InteractiveDemo>
 
         <FeatureGrid>
@@ -64,11 +66,17 @@ const MetMode = () => {
             whileHover={{ y: -5 }}
             transition={{ duration: 0.2 }}
           >
-            <FeatureIcon>⏱️</FeatureIcon>
-            <FeatureTitle>Professional Accuracy</FeatureTitle>
-            <FeatureDescription>
-              Tempo range: 40-200 BPM with precision timing
-            </FeatureDescription>
+            <div>
+              <FeatureIcon>
+                <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+                  <MdFlashOn />
+                </motion.div>
+              </FeatureIcon>
+              <FeatureTitle>Professional Accuracy</FeatureTitle>
+              <FeatureDescription>
+                Studio-quality timing with precise beat detection and consistent tempo
+              </FeatureDescription>
+            </div>
           </FeatureCard>
 
           <FeatureCard
@@ -76,11 +84,17 @@ const MetMode = () => {
             whileHover={{ y: -5 }}
             transition={{ duration: 0.2 }}
           >
-            <FeatureIcon>🎵</FeatureIcon>
-            <FeatureTitle>Visual & Audio Feedback</FeatureTitle>
-            <FeatureDescription>
-              Clear visual indicators and customizable sounds
-            </FeatureDescription>
+            <div>
+              <FeatureIcon>
+                <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+                  <MdMusicNote />
+                </motion.div>
+              </FeatureIcon>
+              <FeatureTitle>Advanced Subdivisions</FeatureTitle>
+              <FeatureDescription>
+                Choose from multiple distinct sounds
+              </FeatureDescription>
+            </div>
           </FeatureCard>
 
           <FeatureCard
@@ -88,11 +102,17 @@ const MetMode = () => {
             whileHover={{ y: -5 }}
             transition={{ duration: 0.2 }}
           >
-            <FeatureIcon>⚡</FeatureIcon>
-            <FeatureTitle>Tap Tempo</FeatureTitle>
-            <FeatureDescription>
-              Set your tempo naturally by tapping the beat
-            </FeatureDescription>
+            <div>
+              <FeatureIcon>
+                <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+                  <MdVolumeUp />
+                </motion.div>
+              </FeatureIcon>
+              <FeatureTitle>Multiple Sound Types</FeatureTitle>
+              <FeatureDescription>
+                Choose from synth, woodblock, cowbell, click, beep, and drum sounds
+              </FeatureDescription>
+            </div>
           </FeatureCard>
 
           <FeatureCard
@@ -100,37 +120,17 @@ const MetMode = () => {
             whileHover={{ y: -5 }}
             transition={{ duration: 0.2 }}
           >
-            <FeatureIcon>🎼</FeatureIcon>
-            <FeatureTitle>Time Signatures</FeatureTitle>
-            <FeatureDescription>
-              Customizable time signatures for any musical style
-            </FeatureDescription>
-          </FeatureCard>
-
-          <FeatureCard
-            as={motion.div}
-            whileHover={{ y: -5 }}
-            transition={{ duration: 0.2 }}
-          >
-            <ComingSoonBadge>Coming Soon</ComingSoonBadge>
-            <FeatureIcon>🔄</FeatureIcon>
-            <FeatureTitle>Accent Patterns</FeatureTitle>
-            <FeatureDescription>
-              Custom accent patterns for complex rhythms
-            </FeatureDescription>
-          </FeatureCard>
-
-          <FeatureCard
-            as={motion.div}
-            whileHover={{ y: -5 }}
-            transition={{ duration: 0.2 }}
-          >
-            <ComingSoonBadge>Coming Soon</ComingSoonBadge>
-            <FeatureIcon>📝</FeatureIcon>
-            <FeatureTitle>Subdivisions</FeatureTitle>
-            <FeatureDescription>
-              1/4, 1/8, 1/16, triplets and more
-            </FeatureDescription>
+            <div>
+              <FeatureIcon>
+                <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 4, repeat: Infinity }}>
+                  <MdTouchApp />
+                </motion.div>
+              </FeatureIcon>
+              <FeatureTitle>Tap Tempo</FeatureTitle>
+              <FeatureDescription>
+                Set your tempo naturally by tapping the beat - perfect for finding the right speed
+              </FeatureDescription>
+            </div>
           </FeatureCard>
         </FeatureGrid>
       </ModeContent>

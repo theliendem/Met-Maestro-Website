@@ -1,13 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
 	CTAContainer,
 	CTAContent,
 	CTATitle,
 	CTADescription,
 	CTAButtons,
-	PrimaryButton,
-	SecondaryButton,
+	StoreBadge
 } from "./CTA.styles";
 
 const CTA = () => {
@@ -27,7 +28,7 @@ const CTA = () => {
 					</CTADescription>
 
 					<CTAButtons>
-						<PrimaryButton
+						<StoreBadge
 							as={motion.a}
 							href="https://apps.apple.com/us/app/met-maestro/id6748158233"
 							target="_blank"
@@ -36,20 +37,51 @@ const CTA = () => {
 							whileTap={{ scale: 0.95 }}
 							transition={{ duration: 0.2 }}
 						>
-							Download Free
-						</PrimaryButton>
-						<SecondaryButton
+							                     <img 
+                       src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
+                       alt="Download on the App Store"
+                       style={{ height: '68px' }}
+                     />
+						</StoreBadge>
+						<StoreBadge
 							as={motion.a}
-							href="#features"
+							onClick={(e) => {
+								e.preventDefault();
+								toast("Android version coming very soon!", {
+									position: "top-center",
+									autoClose: 3000,
+									hideProgressBar: false,
+									closeOnClick: true,
+									pauseOnHover: true,
+									draggable: true,
+									progress: undefined,
+									theme: "dark",
+									style: {
+										background: '#1E1E1E',
+										color: '#FFFFFF',
+										fontSize: '1rem',
+										fontWeight: '500',
+										borderLeft: '6px solid #BB86FC'
+									},
+									progressStyle: {
+										background: '#BB86FC'
+									}
+								});
+							}}
 							whileHover={{ scale: 1.05 }}
 							whileTap={{ scale: 0.95 }}
 							transition={{ duration: 0.2 }}
 						>
-							View Features
-						</SecondaryButton>
+							                     <img 
+                       src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                       alt="Get it on Google Play"
+                       style={{ height: '103px' }}
+                     />
+						</StoreBadge>
 					</CTAButtons>
 				</motion.div>
 			</CTAContent>
+			<ToastContainer />
 		</CTAContainer>
 	);
 };

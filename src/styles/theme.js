@@ -15,12 +15,18 @@ export const theme = {
     md: '1.5rem',
     lg: '2rem',
     xl: '3rem',
-    xxl: '4rem'
+    xxl: '4rem',
+    // Viewport-based spacing
+    vxs: '1vw',
+    vsm: '2vw', 
+    vmd: '3vw',
+    vlg: '4vw',
+    vxl: '5vw'
   },
   breakpoints: {
-    mobile: '320px',
-    tablet: '768px',
-    desktop: '1024px'
+    mobile: '25rem', // 400px at 16px base
+    tablet: '48rem', // 768px at 16px base  
+    desktop: '64rem' // 1024px at 16px base
   },
   fonts: {
     primary: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif'

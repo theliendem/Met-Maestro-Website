@@ -27,23 +27,49 @@ export const ModeDescription = styled.p`
 export const ModeContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: ${theme.spacing.xxl};
+  gap: clamp(2rem, ${theme.spacing.vxl}, 4rem);
   align-items: start;
+  padding: 0 clamp(1rem, ${theme.spacing.vlg}, 3rem);
   
   @media (max-width: ${theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
-    gap: ${theme.spacing.xl};
+    gap: clamp(1.5rem, ${theme.spacing.vmd}, 3rem);
+    padding: 0 clamp(0.75rem, ${theme.spacing.vmd}, 2rem);
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding: 0 clamp(0.5rem, ${theme.spacing.vsm}, 1.5rem);
+    gap: clamp(1rem, ${theme.spacing.vsm}, 2rem);
   }
 `;
 
 export const InteractiveDemo = styled.div`
-  background: ${theme.colors.background};
-  border-radius: 15px;
-  padding: 1.5rem 1rem;
-  border: 1px solid ${theme.colors.border};
+  background: transparent;
+  border-radius: 24px;
+  padding: 0;
+  border: none;
   display: flex;
-  flex-direction: column;
-  gap: ${theme.spacing.lg};
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  position: relative;
+  max-width: min(400px, 90vw);
+  overflow: visible;
+  animation: pulse-glow 3s ease-in-out infinite;
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    max-width: min(300px, 85vw);
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      filter: drop-shadow(0 0 20px rgba(187, 134, 252, 0.5));
+    }
+    50% {
+      filter: drop-shadow(0 0 40px rgba(187, 134, 252, 0.8));
+    }
+  }
 `;
 
 export const TunerDisplay = styled.div`
@@ -123,21 +149,40 @@ export const InstrumentOption = styled.button`
 
 export const FeatureGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: ${theme.spacing.lg};
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 45%), 1fr));
+  gap: clamp(1.5rem, ${theme.spacing.vlg}, 2.5rem);
+  
+  @media (max-width: ${theme.breakpoints.tablet}) {
+    grid-template-columns: repeat(auto-fit, minmax(min(150px, 40%), 1fr));
+    gap: clamp(0.75rem, ${theme.spacing.vsm}, 1.5rem);
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+    gap: clamp(0.5rem, ${theme.spacing.vxs}, 1rem);
+  }
 `;
 
 export const FeatureCard = styled.div`
   background: ${theme.colors.background};
   border-radius: 15px;
-  padding: ${theme.spacing.lg};
+  padding: clamp(1rem, ${theme.spacing.vmd}, 2rem);
   border: 1px solid ${theme.colors.border};
   text-align: center;
   position: relative;
   transition: ${theme.transitions.default};
+  min-height: clamp(160px, 20vh, 220px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   
   &:hover {
     border-color: ${theme.colors.accent};
+  }
+  
+  @media (max-width: ${theme.breakpoints.mobile}) {
+    padding: clamp(0.75rem, ${theme.spacing.vsm}, 1.5rem);
+    min-height: clamp(140px, 18vh, 180px);
   }
 `;
 

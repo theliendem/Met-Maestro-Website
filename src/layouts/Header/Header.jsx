@@ -54,6 +54,11 @@ const Header = () => {
 				</Logo>
 				<NavList>
 					<NavItem>
+						<NavLink href="#modes" onClick={(e) => handleNavClick(e, "#modes")}>
+							Modes
+						</NavLink>
+					</NavItem>
+					<NavItem>
 						<NavLink
 							href="#features"
 							onClick={(e) => handleNavClick(e, "#features")}
@@ -61,16 +66,6 @@ const Header = () => {
 							Features
 						</NavLink>
 					</NavItem>
-					<NavItem>
-						<NavLink href="#modes" onClick={(e) => handleNavClick(e, "#modes")}>
-							Modes
-						</NavLink>
-					</NavItem>
-					{/*
-					<NavItem>
-						<NavLink href="#testimonials" onClick={(e) => handleNavClick(e, "#testimonials")}>Reviews</NavLink>
-					</NavItem>
-					*/}
 					<NavItem>
 						<NavLink as={Link} to="/feedback">
 							Feedback

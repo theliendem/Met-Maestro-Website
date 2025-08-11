@@ -15,7 +15,14 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: ${theme.fonts.primary};
+    /* Dark-mode gradient background */
     background-color: ${theme.colors.background};
+    background-image:
+      radial-gradient(55% 35% at 12% -5%, rgba(187, 134, 252, 0.18) 0%, rgba(187, 134, 252, 0.08) 30%, transparent 60%),
+      radial-gradient(75% 55% at 95% 100%, rgba(187, 134, 252, 0.24) 0%, rgba(187, 134, 252, 0.10) 40%, transparent 65%),
+      radial-gradient(90% 60% at 50% 10%, rgba(187, 134, 252, 0.08) 0%, transparent 60%),
+      linear-gradient(180deg, ${theme.colors.background} 0%, ${theme.colors.surface} 42%, ${theme.colors.background} 100%);
+    background-repeat: no-repeat;
     color: ${theme.colors.text.primary};
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -26,6 +33,14 @@ export const GlobalStyles = createGlobalStyle`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+  }
+
+  main {
+    padding-top: clamp(4rem, 8vh, 6rem); /* Space for fixed header */
+    
+    @media (max-width: ${theme.breakpoints.tablet}) {
+      padding-top: clamp(3.5rem, 7vh, 5rem); /* Slightly less space on mobile */
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
